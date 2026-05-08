@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kottagyűjtemény 2026 – Bartók Béla AMI Ifjúsági Fúvószenekar</title>
+<style>
+:root{
+  --bg:#f3f4f8;--bg2:#fff;--bg3:#eaecf2;--border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.14);
+  --text:#111318;--text2:#4b5563;--text3:#9ca3af;--acc:#2563eb;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.04);
+  --shh:0 4px 20px rgba(37,99,235,.13),0 1px 4px rgba(0,0,0,.09);
+  --inp:#fff;--r:11px;--rs:8px;
+  --cf:#1d4ed8;--cfb:rgba(29,78,216,.09);--cfbr:rgba(29,78,216,.2);
+  --cs:#15803d;--csb:rgba(21,128,61,.09);--csbr:rgba(21,128,61,.2);
+  --ck:#ca8a04;--ckb:rgba(202,138,4,.09);--ckbr:rgba(202,138,4,.25);
+  --cm:#ea580c;--cmb:rgba(234,88,12,.09);--cmbr:rgba(234,88,12,.22);
+  --cn:#dc2626;--cnb:rgba(220,38,38,.09);--cnbr:rgba(220,38,38,.2);
+}
+.dark{
+  --bg:#0d0d14;--bg2:#161622;--bg3:#1e1e2e;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --text:#f1f2f6;--text2:#9ca3af;--text3:#4b5563;--acc:#3b82f6;
+  --sh:0 1px 3px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.25);
+  --shh:0 6px 28px rgba(59,130,246,.2),0 2px 8px rgba(0,0,0,.5);--inp:#1a1a2e;
+  --cf:#93c5fd;--cfb:rgba(147,197,253,.1);--cfbr:rgba(147,197,253,.22);
+  --cs:#86efac;--csb:rgba(134,239,172,.09);--csbr:rgba(134,239,172,.2);
+  --ck:#fde68a;--ckb:rgba(253,230,138,.09);--ckbr:rgba(253,230,138,.22);
+  --cm:#fdba74;--cmb:rgba(253,186,116,.09);--cmbr:rgba(253,186,116,.2);
+  --cn:#fca5a5;--cnb:rgba(252,165,165,.09);--cnbr:rgba(252,165,165,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .25s,color .25s;-webkit-font-smoothing:antialiased}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:1.5rem 1rem 2rem;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.main{padding:2rem 2rem 4rem;min-width:0}
+
+/* SIDEBAR */
+.logo{font-size:15px;font-weight:700;color:var(--text);line-height:1.3}
+.logo-al{font-size:11px;color:var(--text3);line-height:1.5;margin-top:4px}
+.sl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 4px;margin-bottom:4px}
+.divider{height:1px;background:var(--border);margin:2px 0}
+
+/* CHIPS — szöveg alapú, ikon nélkül */
+.chips-wrap{display:flex;flex-direction:column;gap:2px}
+.chip{padding:7px 10px;border-radius:var(--rs);border:1px solid transparent;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);transition:all .13s;font-family:inherit;text-align:left;display:flex;justify-content:space-between;align-items:center;width:100%}
+.chip:hover{background:var(--bg3);color:var(--text)}
+.chip.on{font-weight:700;color:#fff!important;border-color:transparent!important}
+.cn2{font-size:10px;background:rgba(255,255,255,.18);border-radius:10px;padding:1px 7px;min-width:22px;text-align:center;flex-shrink:0}
+.chip:not(.on) .cn2{background:var(--bg3);color:var(--text3)}
+.cmind.on{background:#374151}.cFilmzene.on{background:#9d174d}.cMarvel.on{background:#1e3a8a}
+.cDisney.on{background:#14532d}.cMusical.on{background:#92400e}.cBevezeto.on{background:#0c4a6e}
+.cJatek.on{background:#4c1d95}.cMEME.on{background:#6b21a8}.cVegyes.on{background:#064e3b}
+.cKaracsony.on{background:#7f1d1d}.cIndulo.on{background:#1c1917}
+
+/* JELMAGYARÁZAT */
+.jel{display:flex;flex-direction:column;gap:6px}
+.jel-cim{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:2px}
+.jel-sor{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--text2);line-height:1.4}
+.jb{min-width:34px;height:22px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.jb-f{background:var(--cfb);border:1px solid var(--cfbr)}
+.jb-s{background:var(--csb);border:1px solid var(--csbr)}
+.jb-k{background:var(--ckb);border:1px solid var(--ckbr)}
+.jb-m{background:var(--cmb);border:1px solid var(--cmbr)}
+.jb-n{background:var(--cnb);border:1px solid var(--cnbr)}
+.jb-v{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.22)}
+.jb-o{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.22)}
+.jb-flag{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22)}
+.jel-txt{display:flex;flex-direction:column}
+.jel-txt strong{font-size:11px;font-weight:600;color:var(--text)}
+.jel-txt span{font-size:10px;color:var(--text3)}
+
+/* SIDEBAR GOMBOK */
+.sb-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 12px;border-radius:var(--rs);border:1px solid var(--border2);background:var(--bg2);color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;transition:all .14s;font-family:inherit;white-space:nowrap;width:100%;text-decoration:none}
+.sb-btn:hover{background:var(--bg3);color:var(--text);border-color:var(--acc)}
+.sb-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* TOPBAR */
+.topbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
+.qw{flex:1;min-width:200px;position:relative}
+.qw svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--text3);fill:none;stroke-width:1.8;stroke-linecap:round}
+#q{width:100%;padding:10px 14px 10px 36px;border:1px solid var(--border2);border-radius:var(--r);font-size:14px;background:var(--inp);color:var(--text);outline:none;font-family:inherit;transition:border-color .15s,box-shadow .15s}
+#q:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+#q::placeholder{color:var(--text3)}
+.sel{padding:9px 11px;border:1px solid var(--border2);border-radius:var(--rs);font-size:12px;font-weight:500;background:var(--inp);color:var(--text2);cursor:pointer;font-family:inherit;outline:none;transition:border-color .15s}
+.sel:focus{border-color:var(--acc)}
+
+/* STATSOR */
+.statsor{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
+.sp{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:5px 12px;font-size:12px;color:var(--text2);box-shadow:var(--sh)}
+.sp strong{font-weight:700;color:var(--text);margin-right:3px}
+.sp.sp-flag{border-color:rgba(220,38,38,.35);color:var(--cn)}
+
+/* LISTA */
+.lista{display:flex;flex-direction:column;gap:4px}
+.sor{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:12px 15px 34px 14px;display:grid;grid-template-columns:1fr auto;gap:5px 12px;align-items:start;box-shadow:var(--sh);transition:all .17s;position:relative}
+.sor:hover{border-color:var(--acc);box-shadow:var(--shh);transform:translateY(-1px)}
+.sor.v-sor{border-left:3px solid #22c55e}
+.sor.o-sor{border-left:3px solid #f59e0b}
+.sor.h-sor{border-left:3px solid var(--cn);background:rgba(220,38,38,.025)}
+
+/* HIBA GOMB – bal alul */
+.hiba-wrap{position:absolute;left:14px;bottom:8px;opacity:0;pointer-events:none;transition:opacity .16s}
+.sor:hover .hiba-wrap{opacity:1;pointer-events:auto}
+.hiba-btn{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(220,38,38,.1);color:var(--cn);border:1px solid rgba(220,38,38,.2);text-decoration:none;transition:all .14s;cursor:pointer;white-space:nowrap;font-family:inherit}
+.hiba-btn:hover{background:var(--cn);color:#fff}
+
+/* KÁRTYA TARTALOM */
+.sc{font-size:13px;font-weight:600;color:var(--text);line-height:1.35}
+.sm{display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin-top:6px}
+
+/* KATEGÓRIA BADGE */
+.mc{display:inline-block;font-size:10px;padding:2px 9px;border-radius:20px;font-weight:700;white-space:nowrap;color:#fff}
+.mFilmzene{background:#9d174d}.mMarvel{background:#1e3a8a}.mDisney{background:#14532d}
+.mMusical{background:#92400e}.mBevezeto{background:#0c4a6e}.mJatek{background:#4c1d95}
+.mMEME{background:#6b21a8}.mVegyes{background:#064e3b}.mKaracsony{background:#7f1d1d}.mIndulo{background:#1c1917}
+
+/* TAGEK */
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.t-f{background:var(--cfb);color:var(--cf);border-color:var(--cfbr)}
+.t-s{background:var(--csb);color:var(--cs);border-color:var(--csbr)}
+.t-k{background:var(--ckb);color:var(--ck);border-color:var(--ckbr)}
+.t-m{background:var(--cmb);color:var(--cm);border-color:var(--cmbr)}
+.t-n{background:var(--cnb);color:var(--cn);border-color:var(--cnbr)}
+.t-v{background:rgba(34,197,94,.1);color:#166534;border-color:rgba(34,197,94,.22)}
+.t-o{background:rgba(245,158,11,.1);color:#92400e;border-color:rgba(245,158,11,.22)}
+.t-flag{background:rgba(220,38,38,.1);color:var(--cn);border-color:rgba(220,38,38,.2)}
+.dark .t-f{color:var(--cf)}.dark .t-s{color:var(--cs)}
+.dark .t-v{background:rgba(34,197,94,.1);color:#86efac;border-color:rgba(34,197,94,.18)}
+.dark .t-o{background:rgba(245,158,11,.1);color:#fcd34d;border-color:rgba(245,158,11,.18)}
+.dark .t-flag{color:var(--cn);background:rgba(252,165,165,.08);border-color:rgba(252,165,165,.18)}
+
+.mt{font-size:11px;color:var(--text2)}.mn{font-size:11px;color:var(--cm);font-style:italic}
+.dark .mn{color:var(--ck)}
+
+/* GOMBOK */
+.gombok{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start}
+.gp{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:6px 12px;border-radius:var(--rs);border:1.5px solid var(--acc);color:var(--acc);text-decoration:none;transition:all .14s;white-space:nowrap}
+.gp:hover{background:var(--acc);color:#fff}
+.gh{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:6px 12px;border-radius:var(--rs);border:1px solid var(--border2);color:var(--text2);text-decoration:none;transition:all .14s;white-space:nowrap}
+.gh:hover{background:var(--bg3);color:var(--text)}
+.gi{width:10px;height:10px;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.ures{padding:3rem;text-align:center;color:var(--text3);font-size:14px;background:var(--bg2);border-radius:var(--r);border:1px solid var(--border)}
+
+@media(max-width:680px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:1rem}
+  .main{padding:1rem 1rem 3rem}
+  .jel{display:none}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div>
+    <div class="logo">Kottagyűjtemény 2026</div>
+    <div class="logo-al">Bartók Béla AMI<br>Ifjúsági Fúvószenekar</div>
+  </div>
+
+  <div>
+    <div class="sl">Kategóriák</div>
+    <div class="chips-wrap" id="chips"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- JELMAGYARÁZAT -->
+  <div class="jel">
+    <div class="jel-cim">Jelmagyarázat</div>
+
+    <div class="jel-sor">
+      <div class="jb jb-f">🎺</div>
+      <div class="jel-txt">
+        <strong>Concert Band</strong>
+        <span>Fúvószenekar</span>
+      </div>
+    </div>
+    <div class="jel-sor">
+      <div class="jb jb-s">🎻</div>
+      <div class="jel-txt">
+        <strong>Symphonic</strong>
+        <span>Szimfonikus zenekar</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="jel-sor">
+      <div class="jb jb-k" style="font-size:9px;font-weight:700;color:var(--ck)">K</div>
+      <div class="jel-txt"><strong>Könnyű</strong></div>
+    </div>
+    <div class="jel-sor">
+      <div class="jb jb-m" style="font-size:9px;font-weight:700;color:var(--cm)">M</div>
+      <div class="jel-txt"><strong>Közepes</strong></div>
+    </div>
+    <div class="jel-sor">
+      <div class="jb jb-n" style="font-size:9px;font-weight:700;color:var(--cn)">N</div>
+      <div class="jel-txt"><strong>Nehéz</strong></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="jel-sor">
+      <div class="jb jb-v" style="font-size:11px;font-weight:700;color:#166534">=</div>
+      <div class="jel-txt">
+        <strong>Hangszerelési verzió</strong>
+      </div>
+    </div>
+    <div class="jel-sor">
+      <div class="jb jb-o" style="font-size:11px;font-weight:700;color:#92400e">+</div>
+      <div class="jel-txt">
+        <strong>Medley</strong>
+        <span>Összeállítás</span>
+      </div>
+    </div>
+    <div class="jel-sor">
+      <div class="jb jb-flag" style="font-size:12px">⚠</div>
+      <div class="jel-txt">
+        <strong>Hiányos link</strong>
+        <span>Ellenőrizendő</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <button class="sb-btn" onclick="tV()">
+      <svg id="tI" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span id="tS">Sötét mód</span>
+    </button>
+    <a class="sb-btn" href="https://docs.google.com/spreadsheets/d/1DGLTJT8LPeQOkEvFiiLJxgOS_8lzqOxvgWDKIwIy6HY/edit" target="_blank">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="3"/></svg>
+      Google Sheets
+    </a>
+    <a class="sb-btn" href="https://drive.google.com/drive/folders/14DszkGBmMPwrgJxqpH3hKX9odoj4c2w8" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Google Drive mappa
+    </a>
+    <a class="sb-btn" href="https://www.facebook.com/groups/317794034929732/" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook-csoport
+    </a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="qw">
+      <svg viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+      <input type="text" id="q" placeholder="Keresés cím, szerző, stílus alapján…" oninput="render()">
+    </div>
+    <select class="sel" id="hS" onchange="render()">
+      <option value="">Minden hangszerelés</option>
+      <option value="fuvos">Concert Band – Fúvószenekar</option>
+      <option value="szim">Symphonic – Szimfonikus</option>
+    </select>
+    <select class="sel" id="aS" onchange="render()">
+      <option value="">Minden típus</option>
+      <option value="ossze">Medley / Összeállítás</option>
+      <option value="valtozat">Hangszerelési verzió</option>
+      <option value="hianyzik">⚠ Hiányos link</option>
+    </select>
+    <select class="sel" id="rS" onchange="render()">
+      <option value="alap">Eredeti sorrend</option>
+      <option value="abc">Cím A–Z</option>
+      <option value="szerzo">Szerző A–Z</option>
+      <option value="hianyzik">Hiányos linkek előre</option>
+    </select>
+  </div>
+
+  <div class="statsor" id="ss"></div>
+  <div class="lista" id="lista"></div>
+  <div class="ures" id="ures" style="display:none">Nincs találat a megadott szűrőkre.</div>
+</div>
+</div>
+
+<script>
+const EMAIL='rharsona2020@gmail.com';
+const EI='<svg class="gi" viewBox="0 0 16 16"><path d="M6 2H2v12h12v-4M10 2h4v4M10 6l4-4"/></svg>';
+const EH='<svg class="gi" viewBox="0 0 16 16"><polygon points="5,3 13,8 5,13"/></svg>';
+const EM='<svg class="gi" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>';
+
+function gmailLink(cim,kat,tipus){
+  const sub=encodeURIComponent('[Kottagyűjtemény] Hiba: '+cim);
+  const body=encodeURIComponent('Mű: '+cim+'\nKategória: '+kat+(tipus?'\nProbléma: '+tipus:'')+'\n\nLeírás:\n');
+  return 'https://mail.google.com/mail/?view=cm&fs=1&to='+EMAIL+'&su='+sub+'&body='+body;
+}
+
+const K=[
+{c:"Marvel",t:"Avengers – főtéma (Infinity War)",s:"Alan Silvestri",h:"szim",n:"nehez",ms:"https://musescore.com/user/35132098/scores/6188159",dr:"https://drive.google.com/file/d/1vekW1ZTinY1PSp1IY5lX7ljGfRxTn4lR/view"},
+{c:"Marvel",t:"Captain America induló [A – fúvószenekar]",s:"Alan Silvestri",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/38244093/scores/6730667",dr:"https://drive.google.com/file/d/1RYJxaNRrJGVuO8JG8djgVykuCmk1C_nH/view"},
+{c:"Marvel",t:"Captain America induló [B – fúvószenekar]",s:"Alan Silvestri",h:"fuvos",n:"kozepes",v:1,dr:"https://drive.google.com/file/d/1Pbr7hj01T0T7jJNWVduDcrlNKz5RPoMm/view",flag:"Hiányzik MuseScore link"},
+{c:"Marvel",t:"Heroes főtéma – fúvószenekar",s:"Danny Elfman",h:"fuvos",n:"nehez",note:"Avengers: Age of Ultron OST",ms:"https://musescore.com/user/38244093/scores/6821120",dr:"https://drive.google.com/file/d/1YLEMldfpok4r8yN-VmF5Uar7N26d8IgG/view"},
+{c:"Marvel",t:"Main on End – fúvószenekar",s:"Alan Silvestri",h:"fuvos",n:"nehez",note:"Avengers Endgame",ms:"https://musescore.com/user/38244093/scores/6736397",dr:"https://drive.google.com/file/d/1Jqo-WlunsXjsn3-DgNfq5pTZ2UJO7Oyj/view"},
+{c:"Marvel",t:"Portals – fúvószenekar",s:"Alan Silvestri",h:"fuvos",n:"nehez",v:1,ms:"https://musescore.com/user/38244093/scores/6736480",dr:"https://drive.google.com/file/d/1uDqpp2LdH1z_J2Z7U0UUynGLuLsvSrR9/view"},
+{c:"Marvel",t:"Portals – szimfonikus",s:"Alan Silvestri",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/15454861/scores/6810810",dr:"https://drive.google.com/file/d/1fWrIdvN3EkhctvJuV3um697ZRVF2-TNF/view"},
+{c:"Marvel",t:"A Bosszúállók főtémája [A változat]",s:"Alan Silvestri",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/142299/scores/5552319",dr:"https://drive.google.com/file/d/1K72G6c2j_hc-GZi7HFHP2XewgiCwxKgg/view"},
+{c:"Marvel",t:"A Bosszúállók főtémája [B változat]",s:"Alan Silvestri",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/28571943/scores/5587471",dr:"https://drive.google.com/file/d/1qMh_lDqXL5_G_tgJepkzVF4_Es0CqNKq/view"},
+{c:"Marvel",t:"Helicarrier",s:"Alan Silvestri",h:"szim",n:"nehez",note:"Bosszúállók OST",ms:"https://musescore.com/user/15454861/scores/9290263",dr:"https://drive.google.com/file/d/1B3KekKxkzx7wG79J8SiXdtq3CXrSq34H/view"},
+{c:"Marvel",t:"Thor – The Dark World főtéma",s:"Brian Tyler",h:"szim",n:"nehez",ms:"https://musescore.com/user/15454861/scores/5695003",dr:"https://drive.google.com/file/d/149-p8YwAgLcMjYVWKvkDHOba6bzZcVUI/view"},
+{c:"Marvel",t:"Marvel Stúdiók fanfár – fúvószenekar",s:"Michael Giacchino",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/38244093/scores/6727786",dr:"https://drive.google.com/file/d/1_YoYzxGmVG5Ai8hC0X4laxl-UeroSleb/view"},
+{c:"Marvel",t:"Batman: Az animációs sorozat főtémája",s:"Danny Elfman",h:"szim",n:"kozepes",ms:"https://musescore.com/user/98880/scores/6901541",dr:"https://drive.google.com/file/d/1O132CWvsXYJtgpVT3b3bcToaGG3JiOlX/view"},
+{c:"Marvel",t:"Batman Begins – Corynorhinus",s:"Hans Zimmer / James Newton Howard",h:"szim",n:"kozepes",ms:"https://musescore.com/user/36369207/scores/6698293",dr:"https://drive.google.com/file/d/1vl0HXZh26ioEvQ8JXTy_v30VZG1rmETx/view"},
+{c:"Marvel",t:"Pókember-trilógia – zenekari suite",s:"Danny Elfman / Michael Giacchino",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/purest-melody/scores/5045717",dr:"https://drive.google.com/file/d/1BsBpx2GEHf8Qx9y7WLlIhkxDuvIEuGhX/view"},
+{c:"Marvel",t:"A Hihetetlen Família – The Glory Days",s:"Michael Giacchino",h:"szim",n:"kozepes",ms:"https://musescore.com/user/28851766/scores/5977139",dr:"https://drive.google.com/file/d/15-aOM0ZobywkUR7-omtDCvOneByXLwgR/view"},
+{c:"Marvel",t:"Marvel témák összeállítása [A]",s:"Több szerző",h:"szim",n:"nehez",o:1,v:1,note:"Spider-Man, Iron Man 3, Thor: TDW",ms:"https://musescore.com/user/29046924/scores/5207621",dr:"https://drive.google.com/file/d/1r2XWCcGZpOmiQqqLoFOo0o4f8Vhs1CSM/view"},
+{c:"Marvel",t:"Marvel témák összeállítása [B – kibővített]",s:"Több szerző",h:"szim",n:"nehez",o:1,v:1,note:"Azonos MS forrás, eltérő nyomtatott verzió",ms:"https://musescore.com/user/29046924/scores/5207621",dr:"https://drive.google.com/file/d/1VrwGJ0nXXNsqBtuDJvZDLiY19QQgFnXM/view"},
+{c:"Marvel",t:"Bosszúállók: Végjáték összeállítás",s:"Alan Silvestri / Brian Tyler",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/35331658/scores/6798950",dr:"https://drive.google.com/file/d/1thQE0vz-HjBq3Ds6MSiw6fuC5eN1_sbj/view"},
+{c:"Marvel",t:"MCU összefoglaló – Assemble (1–2. fázis)",s:"Több szerző",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/433686/scores/5576734",dr:"https://drive.google.com/file/d/1SsyUVXnjaJPzJRgV4Hm5he0kk6EwsrfY/view"},
+{c:"Marvel",t:"Marvel Stúdiók összeállítás (teljes)",s:"Több szerző",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/12896621/scores/6839018",dr:"https://drive.google.com/file/d/19Fb7tUv8_5WzTXT_IvZEn6c_R71jg7sK/view"},
+{c:"Marvel",t:"Marvel szimfonikus világ – 1–2. fázis",s:"Több szerző",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/28000195/scores/5637959",dr:"https://drive.google.com/file/d/1L1HT0pMNnB1jbM8UcPXyHqX0CM3k067V/view"},
+{c:"Marvel",t:"MCU válogatás – 1–2. fázis [változat]",s:"Több szerző",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/28866720/scores/7365518",dr:"https://drive.google.com/file/d/1jwTnp2IwsZz9yQghQaihjwyMN_yK596Q/view"},
+{c:"Marvel",t:"MCU összeállítás 20 perc [A]",s:"Több szerző",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/8476976/scores/4869835",dr:"https://drive.google.com/file/d/193Fhm5WwoHuByJWUhk-YjS8iL1oW7ZKV/view"},
+{c:"Marvel",t:"MCU összeállítás 20 perc [B – frissített]",s:"Több szerző",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/19812551/scores/5038269",dr:"https://drive.google.com/file/d/18fVzeoeiCAAMKwwhMB9-_rQJNvZBWu-0/view"},
+{c:"Marvel",t:"MCU kronológiai összeállítás 2008–2018",s:"Több szerző",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/30682841/scores/5533923",dr:"https://drive.google.com/file/d/1mlHzj_pQR5MxikCb6BKscACFMm99VABp/view"},
+{c:"Marvel",t:"Marvel 1. fázis – fúvószenekar",s:"Paul Vandervort (arr.)",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/1640396/scores/6656790",dr:"https://drive.google.com/file/d/18xBdBfpSyTlbzNtWfwsCqYXGechLFN0f/view"},
+{c:"Marvel",t:"Marvel – Az Infinity-saga",s:"Több szerző",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/35675360/scores/7032714",dr:"https://drive.google.com/file/d/1w5oP0aTHPFgByBSS9Rr8k8suYE_LDUJ8/view"},
+{c:"Marvel",t:"MCU zenéje – fúvószenekar [változat]",s:"Több szerző",h:"fuvos",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/28000195/scores/5236864",dr:"https://drive.google.com/file/d/1YFW_8O_qpzAhrL9bBGtSumgNEPzAkB6t/view"},
+{c:"Marvel",t:"MCU zenéje – teljes zenekar [változat]",s:"Több szerző",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/28000195/scores/5166503",dr:"https://drive.google.com/file/d/1epGNpUT9dvPCbot-KktDxI5ebgcxYEAn/view"},
+{c:"Marvel",t:"Marvel suite",s:"Több szerző",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/5544066/scores/5977041",dr:"https://drive.google.com/file/d/1M0uTI-umxWFdCSFvCcZbB2okYc4p3uge/view"},
+{c:"Marvel",t:"Pókember – Incidental Music [CB, 2002 film]",s:"Danny Elfman (arr. Ethan Gammage)",h:"fuvos",n:"nehez",note:"ArrangeMe licenszelt kotta – eredeti filmzene átirat, más mint a trilógia-suite",dr:"https://drive.google.com/file/d/13tLDfRqwZoiBAv-FehyhlfgdhoXEY-in/view"},
+{c:"Disney",t:"Disney bevezető téma",s:"",h:"szim",n:"konnyu",ms:"https://musescore.com/user/28571943/scores/9475618",dr:"https://drive.google.com/file/d/1Fj-X-dUPhZUOeIGG-ZSem9N8ZH963LFI/view"},
+{c:"Disney",t:"Disney – 100. évfordulós átirat",s:"Több szerző",h:"szim",n:"kozepes",ms:"https://musescore.com/user/35415674/scores/9556507",dr:"https://drive.google.com/file/d/1-oqwdlDs7O4EzwfyRpyKg919UNRrOldh/view"},
+{c:"Disney",t:"When You Wish Upon a Star",s:"Leigh Harline",h:"szim",n:"konnyu",ms:"https://musescore.com/user/7450631/scores/3097001",dr:"https://drive.google.com/file/d/1DCuJz9xYGZ8BXoGT379NyBMSCvuIrXGN/view"},
+{c:"Disney",t:"Disney összeállítás – Easy Medley 2",s:"Több szerző",h:"szim",n:"konnyu",o:1,ms:"https://musescore.com/user/12770561/scores/4057251",dr:"https://drive.google.com/file/d/1bf1KYDOsXJYQndCY12_fGCTRLSDJoqID/view"},
+{c:"Disney",t:"Animation Medley",s:"Több szerző",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/184889/scores/6722726",dr:"https://drive.google.com/file/d/16MJ8AWsaSPfajDbAwaW8WNhxp-KFXdl9/view"},
+{c:"Disney",t:"A Disney Dream",s:"Több szerző",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/34863152/scores/6805506",dr:"https://drive.google.com/file/d/1dJWzeOBbEsjZjcKqTyl6zY0oYvkf5O_K/view"},
+{c:"Disney",t:"Disney Medley – teljes zenekar [A]",s:"Több szerző",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/193583/scores/4879079",dr:"https://drive.google.com/file/d/1nlJey4-nRlsfmpagusMuEuFDnrVYeusm/view"},
+{c:"Disney",t:"Disney Medley [B változat]",s:"Több szerző",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/12357351/scores/6653645",dr:"https://drive.google.com/file/d/1Kz6OTRq-Utv01rEpegtqFwVp9rZ5U_Qf/view"},
+{c:"Disney",t:"Válogatás a Disney-ből – hosszú összeállítás",s:"Több szerző",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/1283896/scores/5247892",dr:"https://drive.google.com/file/d/1NleNMcB_7PU1fEf-Jl1rmNoorxZqRvEV/view"},
+{c:"Disney",t:"Disney összeállítás – fúvószenekar",s:"Több szerző",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/29131582/scores/5442519",dr:"https://drive.google.com/file/d/1KsvTMMZpV1GFSAGZk1Qu_uE67AoJr45A/view"},
+{c:"Disney",t:"Az Oroszlánkirály – This Land",s:"Hans Zimmer",h:"szim",n:"kozepes",ms:"https://musescore.com/user/36369207/scores/6640786",dr:"https://drive.google.com/file/d/1ISL6kT4NGZxg7TAuiTf97uWUb9m6T023/view"},
+{c:"Disney",t:"Az Oroszlánkirály – King of Pride Rock",s:"Hans Zimmer (arr. Adriaensens)",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/15685/scores/83847",dr:"https://drive.google.com/file/d/1UMbs-k5_7DLEYNc0L1L8RPlOgUXMHiBH/view"},
+{c:"Disney",t:"Az Oroszlánkirály – To Die For (Stampede)",s:"Hans Zimmer",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/6691334",dr:"https://drive.google.com/file/d/1ieV5bmfH5T6SxMRBrfxGiOiiqKUrytDS/view"},
+{c:"Disney",t:"Atlantisz – Az elveszett birodalom",s:"James Newton Howard",h:"szim",n:"kozepes",ms:"https://musescore.com/publishscore/scores/6217148",dr:"https://drive.google.com/file/d/1PYZZ9K1CdHAmDHATWFKS9YPCfbr4pgWS/view"},
+{c:"Disney",t:"Avatar – Suite",s:"James Horner",h:"szim",n:"nehez",ms:"https://musescore.com/user/15454861/scores/6174228",dr:"https://drive.google.com/file/d/1X4yYgerYPazts2dPnTwYYfp_VxU3XAvl/view"},
+{c:"Disney",t:"Jégvarázs – Legyen hó! [A]",s:"Kristen & Robert Lopez",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/22570626/scores/6850567",dr:"https://drive.google.com/file/d/1b_2C-C7I3DJeQQZ4ZtKeOBthL_Qzg3SE/view"},
+{c:"Disney",t:"Jégvarázs 2 – Into the Unknown [B]",s:"Kristen & Robert Lopez",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/129761/scores/6558850",dr:"https://drive.google.com/file/d/1CmPkefgDyyOYmnEkHhbIeBPd5y8r9_FF/view"},
+{c:"Disney",t:"Óceán zenéje – Music from Moana [A]",s:"Lin-Manuel Miranda",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/406951/scores/4189306",dr:"https://drive.google.com/file/d/1aOyJ3PG2dvLWNTm5l3ZRHoU5WCk9c4EJ/view"},
+{c:"Disney",t:"Óceán zenéje – Music from Moana [B]",s:"Lin-Manuel Miranda",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/15321681/scores/5064861",dr:"https://drive.google.com/file/d/1aavVygOELsI-cbpDWmfw9j37OyjDzGEF/view"},
+{c:"Disney",t:"Encanto – We Don't Talk About Bruno [A – szimf.]",s:"Lin-Manuel Miranda",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/40334794/scores/7784867",dr:"https://drive.google.com/file/d/1JKni-N3spXIRGR325mKOl1jq-LInE1F4/view"},
+{c:"Disney",t:"Encanto – We Don't Talk About Bruno [B – CB]",s:"Lin-Manuel Miranda (arr. Brandon Miller)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/31483852/scores/7452743",dr:"https://drive.google.com/file/d/1mDybxbt9JIiAW25b4I60gJQ63MbC-k4O/view"},
+{c:"Disney",t:"Encanto – We Don't Talk About Bruno [C]",s:"Lin-Manuel Miranda",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/44665586/scores/7610138",dr:"https://drive.google.com/file/d/13jO_-jjqgE8yi06T5qQdJGpKPo6N3tCU/view"},
+{c:"Disney",t:"Aladdin – A Whole New World",s:"Alan Menken",h:"szim",n:"konnyu",ms:"https://musescore.com/user/32559431/scores/6517273",dr:"https://drive.google.com/file/d/1Lmgp-XCjjw6U9rL8fsd_A8zCCkMHn6Hh/view"},
+{c:"Disney",t:"Aladdin Suite – fúvószenekar",s:"Alan Menken (arr. Bart Maas)",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/8277036/scores/3705136",dr:"https://drive.google.com/file/d/1fYQy_q600-RHL7HFTeBJ3o2FVWBaSvwz/view"},
+{c:"Disney",t:"A kis hableány – Part of Your World",s:"Alan Menken",h:"szim",n:"konnyu",ms:"https://musescore.com/user/95368/scores/6695015",dr:"https://drive.google.com/file/d/18SQmGdyk5w_66deDhbm_MsZK7Yv-5I6Z/view"},
+{c:"Disney",t:"Szépség és a Szörnyeteg",s:"Alan Menken",h:"szim",n:"konnyu",ms:"https://musescore.com/user/25098/scores/4255551",dr:"https://drive.google.com/drive/folders/1ZYgr5zAuI_8x-14eULq7XnHdjEtWBU-t"},
+{c:"Disney",t:"E.T. – Repülő téma [A – szimfonikus]",s:"John Williams",h:"szim",n:"kozepes",v:1,note:"Universal/Amblin film",ms:"https://musescore.com/user/5050526/scores/4272116",dr:"https://drive.google.com/file/d/1L6cnxU3oCFnNu500TXVuyXrctCGcFMgp/view"},
+{c:"Disney",t:"E.T. – Repülő téma [B – fúvószenekar]",s:"John Williams (arr. Menkhorst)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/27598003/scores/9862981",dr:"https://drive.google.com/file/d/1EG59r-6kCNLwHkQ3wnSKazXyJxyuuPv0/view"},
+{c:"Disney",t:"Gravity Falls főtéma – fúvószenekar",s:"Brad Breeck (arr. Adony Trio)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/2712786/scores/1379916",dr:"https://drive.google.com/file/d/1srgzRaBuyEgcUmeI1lFLwlgKbATetdsd/view"},
+{c:"Disney",t:"Repcsik – 04. tétel",s:"Mark Mancina",h:"szim",n:"kozepes",ms:"https://musescore.com/user/36369207/scores/6770810",dr:"https://drive.google.com/file/d/1qexmtchiQWEzyK0dPN93Ba6iEw8o-C5j/view"},
+{c:"Disney",t:"Ferdinand – Flower Festival Medley",s:"John Powell",h:"szim",n:"kozepes",o:1,note:"Blue Sky/Fox film",ms:"https://musescore.com/user/36369207/scores/6588485",dr:"https://drive.google.com/file/d/1f_BqWBtcS3FDE3Qi66b3Nh4LUSdVw0WF/view"},
+{c:"Disney",t:"Rio – Bird Fight",s:"John Powell",h:"fuvos",n:"kozepes",note:"Blue Sky Studios / Fox film",ms:"https://musescore.com/user/36369207/scores/6731667",dr:"https://drive.google.com/file/d/1L1AceDwdcxsKnQ7Oior-OAYU8Dj1Bh2s/view"},
+{c:"Disney",t:"Karácsonyi rémálom – Suite",s:"Danny Elfman",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/31899147/scores/6286291",dr:"https://drive.google.com/file/d/1CTyEvEpx245aIrdmI08WnySqLGqcQ7TF/view"},
+{c:"Disney",t:"Atlantisz – The Crystal Chamber",s:"James Newton Howard (arr. Alexander Adriaensens)",h:"szim",n:"nehez",note:"Különböző tétel az Atlantisz főtémától",ms:"https://musescore.com/user/15685/scores/1092446",dr:"https://drive.google.com/file/d/1Kw9jkAZnUzAei7nz8ZuLz77OO9pR4BLH/view"},
+{c:"Disney",t:"A Notre Dame-i toronyőr – The Bells of Notre Dame",s:"Alan Menken (arr. Alexander Adriaensens)",h:"szim",n:"kozepes",ms:"https://musescore.com/user/15685/scores/6692652",dr:"https://drive.google.com/file/d/1LB46mC6EPDUgSUXjLwx7S5KSjw8mIcSh/view"},
+{c:"Disney",t:"Merry-Go-Round of Life [fúvószenekar, WIP]",s:"Joe Hisaishi (arr. CB)",h:"fuvos",n:"kozepes",note:"A mozgó kastély főtéma",ms:"https://musescore.com/user/7445686/scores/2851556",dr:"https://drive.google.com/file/d/15mWWnlsbhIqk0MWcOpxd7xB6_B_Vw5VN/view"},
+{c:"Disney",t:"Disney Classics Medley [CB]",s:"Több szerző (arr. Master Buten)",h:"fuvos",n:"kozepes",o:1,note:"Under the Sea, Beauty and the Beast, stb.",ms:"https://musescore.com/user/26955436/scores/5464143",dr:"https://drive.google.com/file/d/18rWUfqVqSAEom2ERJK40ovPVM1fGhhVG/view"},
+{c:"Disney",t:"Disney Princess – Selection for Symphonic Band",s:"Több szerző (arr. szimfonikus)",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/184889/scores/10146070",dr:"https://drive.google.com/file/d/11udElo9SWGH_1N4WFoxyt-V2707rE_6J/view"},
+{c:"Disney",t:"Disney Princess Medley",s:"Több szerző (arr. misc)",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/62350684/scores/13675537",dr:"https://drive.google.com/file/d/1y2I60Oc3DvZ8vj07KQeQSuhbRm04lRaB/view"},
+{c:"Disney",t:"Happily Ever After – Disney Medley",s:"Több szerző",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/34306459/scores/6834980",dr:"https://drive.google.com/file/d/1L1k7FsrCSurVfcEOZ-fg8Bv7poHNlq12/view"},
+{c:"Disney",t:"Walt Disney Overture [CB]",s:"Több szerző (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/35534225/scores/6989255",dr:"https://drive.google.com/file/d/1zvxeBGxCkXOw-cLqjCz9dLU07qgMBAE2/view"},
+{c:"Disney",t:"Disney Opening Theme v3.1 [CB]",s:"arr. CB",h:"fuvos",n:"konnyu",v:1,note:"Különbözik a meglévő Disney bevezető (scores/9475618) változattól",ms:"https://musescore.com/user/12674171/scores/9254287",dr:"https://drive.google.com/file/d/1xI-r5UFTG476gHQGBQpVp7Y7bnyX8gmp/view"},
+{c:"Disney",t:"Fantasmic! – Hollywood Studios Closing Theme",s:"Több szerző (arr. CB)",note:"Disney theme park show – különböző filmzenékből összeállítva",h:"szim",n:"kozepes",ms:"https://musescore.com/user/29498406/scores/5357274",dr:"https://drive.google.com/file/d/16vzwzjO9wsZ5xi2p-4GhtAqRIL6wFL1l/view"},
+{c:"Disney",t:"Main Street Electrical Parade – fúvószenekar",s:"arr. CB",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/2082006/scores/2571461",dr:"https://drive.google.com/file/d/1RV9vBhNDGaqZymzc3lkhyfN7Qo0NQFzN/view"},
+{c:"Disney",t:"Jégvarázs – Frozen [teljes CB átirat]",s:"Christophe Beck / Kristen Anderson-Lopez / Robert Lopez (arr. CB)",h:"fuvos",n:"nehez",o:1,v:1,note:"Különbözik az Into the Unknown és Legyen hó! változatoktól",ms:"https://musescore.com/user/34729746/scores/11880844",dr:"https://drive.google.com/file/d/1a72h306xmj3Qv-9nBRXWTmfljLlJtSc4/view"},
+{c:"Disney",t:"Az Oroszlánkirály – Be Prepared [CB]",s:"Elton John / Tim Rice (arr. CB)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/14549191/scores/11645800",dr:"https://drive.google.com/file/d/1gvhr6b6XOWO7CTeqAIWUycvhjAJcQws6/view"},
+{c:"Disney",t:"A dzsungel könyve – The Bare Necessities [CB]",s:"Terry Gilkyson (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/28923885/scores/9457693",dr:"https://drive.google.com/file/d/19RmrZazvbwV_AXJMX41SCVwy8_AHujnL/view"},
+{c:"Disney",t:"Encanto – We Don't Talk About Bruno [D változat]",s:"Lin-Manuel Miranda (arr. különböző)",h:"fuvos",n:"konnyu",v:1,ms:"https://musescore.com/user/29664935/scores/7431695",dr:"https://drive.google.com/file/d/1B0W6pW79H-gt2FWR0zxPn9I02CELXGJP/view"},
+{c:"Filmzene",t:"A Keresztapa főtémája",s:"Nino Rota",h:"szim",n:"konnyu",ms:"https://musescore.com/joshuasommerlovesmoviesandcricket/scores/4455531",dr:"https://drive.google.com/file/d/1S6V6Yj-6sOzKZ46jud1eSo-DwQCA2Dey/view"},
+{c:"Filmzene",t:"Utazás a Föld középpontjára",s:"Andrew Lockington",h:"szim",n:"kozepes",ms:"https://musescore.com/user/15454861/scores/7230945",dr:"https://drive.google.com/file/d/1ONVwy-Reni7HXV4c0Vb-ddC5dgzmllI-/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – Suite [szimfonikus]",s:"Klaus Badelt / Hans Zimmer",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/254271/scores/2421856",dr:"https://drive.google.com/file/d/111ttgbeigOnze_wnsROXl8kSXPWL-5nE/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – On Stranger Tides [CB]",s:"Klaus Badelt / Hans Zimmer",h:"fuvos",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/643696/scores/2448786",dr:"https://drive.google.com/file/d/1eUpc3Qk0tyg5xgcOsVDm7m4S23a7BnZy/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – nagy szimfonikus medley",s:"Klaus Badelt / Hans Zimmer",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/255116/scores/5572142",dr:"https://drive.google.com/file/d/1vaVr20aX9HfD1jfdqdPWgvZR-OIS39Ia/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – fúvós medley [Kessler]",s:"Klaus Badelt / Hans Zimmer (arr. Kessler)",h:"fuvos",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/1233171/scores/1180511",dr:"https://drive.google.com/file/d/1VlGsF5ALfypBNuBL6KXm_lmOeSNmW8FZ/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – Two Hornpipes",s:"Hans Zimmer (The Soundtrack Factory)",h:"szim",n:"konnyu",ms:"https://musescore.com/user/36369207/scores/6537981",dr:"https://drive.google.com/file/d/1FzDBX-HVzAPKl768GIKZ1GiAcul1sbsW/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – The Black Pearl",s:"Klaus Badelt / Hans Zimmer (The Soundtrack Factory)",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/6492275",dr:"https://drive.google.com/file/d/1D9YIs1jRDR_0de5FJSI0b8LAvAuJ_pp8/view"},
+{c:"Filmzene",t:"A Hét mesterlövész – Suite [CB]",s:"Elmer Bernstein",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/15454861/scores/7407191",dr:"https://drive.google.com/file/d/11E8xWyVnPDDT2dEB-PjsZXuGOkrg6ut_/view"},
+{c:"Filmzene",t:"Gladiátor",s:"Hans Zimmer",h:"szim",n:"nehez",ms:"https://musescore.com/user/254271/scores/4247041",dr:"https://drive.google.com/file/d/1CV1etn1SPaaC4I53tvkgnXmqcT-Tvsqd/view"},
+{c:"Filmzene",t:"Apollo 13 – főcím",s:"James Horner",h:"szim",n:"kozepes",ms:"https://musescore.com/user/15454861/scores/6018019",dr:"https://drive.google.com/file/d/1d-_TSd0-x_ph8w5gNExkwaDBad8wVHtV/view"},
+{c:"Filmzene",t:"007 – Bond, James Bond",s:"Monty Norman / John Barry",h:"szim",n:"kozepes",ms:"https://musescore.com/user/27105927/scores/4910247",dr:"https://drive.google.com/file/d/1bnoDqiVBmuPSHRccVPnt4111f_SUgNZ3/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Suite [CB]",s:"John Powell",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/29418069/scores/5498683",dr:"https://drive.google.com/file/d/1UQJXmWaNO_POz8bF4tKe2k9b4IO-Fr76/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Suite [szimfonikus]",s:"John Powell",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/20635/scores/1150871",dr:"https://drive.google.com/file/d/11DjMufS03atox2rW3gE2dDXNquU7JHFC/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Test Drive",s:"John Powell",h:"szim",n:"kozepes",ms:"https://musescore.com/user/15454861/scores/8530463",dr:"https://drive.google.com/file/d/1s2kqp0pXYscTXOfmp64rIkE7L9qFKshZ/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – epikus suite",s:"John Powell",h:"szim",n:"nehez",o:1,yt:"https://www.youtube.com/watch?v=rWwpKDhi0TE",ms:"https://musescore.com/gingerandidiut/how-to-train-your-dragon-suite",dr:"https://drive.google.com/file/d/15jHSR0pLlTStEUpRpZTWC8CSgieSayi5/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – This Is Berk",s:"John Powell",h:"szim",n:"kozepes",ms:"https://musescore.com/user/184889/scores/3970941",dr:"https://drive.google.com/file/d/1C6YzmC_uGb46JorVw9rPYSpa8d74KGVl/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Romantic Flight",s:"John Powell",h:"szim",n:"konnyu",ms:"https://musescore.com/user/113505/scores/1581676",dr:"https://drive.google.com/file/d/1QbggDD2d1pnnlkCc7CGbxQijYfRZqqJ0/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Medley [CB]",s:"John Powell",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/36369207/scores/6568501",dr:"https://drive.google.com/file/d/1a1yGy5XodMgoFlHoLgffTUfarRYKliK3/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Hidden World",s:"John Powell",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/6597210",dr:"https://drive.google.com/file/d/1q6YYGZi99Ybk9TDs0OCplAOcKQTh1mJx/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Dragon Battle",s:"John Powell",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/6869592",dr:"https://drive.google.com/file/d/1HfcctgdTazsPyLUZLPBjvPEepVqKMNCu/view"},
+{c:"Filmzene",t:"Narnia – The Chronicles of Narnia",s:"Harry Gregson-Williams",h:"szim",n:"kozepes",ms:"https://musescore.com/publishscore/only_the_beginning_of_the_adventure",dr:"https://drive.google.com/file/d/1yGQD_aE7MfG7JHhqlWgzzExy-fjagXoU/view"},
+{c:"Filmzene",t:"A gyámok felemelkedése – Esküm",s:"Alexandre Desplat",h:"szim",n:"kozepes",note:"Rise of the Guardians",ms:"https://musescore.com/user/15454861/scores/6593308",dr:"https://drive.google.com/file/d/1Yqxlr2ahHyVeiCr8JuHu5LZmeBSqZyO9/view"},
+{c:"Filmzene",t:"Schindler listája – főtéma",s:"John Williams",h:"szim",n:"konnyu",ms:"https://musescore.com/user/36369207/scores/6613465",dr:"https://drive.google.com/file/d/1t2WasKm2m1IWDQSaLRZH4n92TkfCaVKy/view"},
+{c:"Filmzene",t:"Vadon hívó szava – Suite",s:"John Powell",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/36369207/scores/6618792",dr:"https://drive.google.com/file/d/1TMqtBIGT6tXL_2Do4-7rUtmXUR52HZLV/view"},
+{c:"Filmzene",t:"Family Guy főtéma – zenekari feldolgozás",s:"Walter Murphy",h:"szim",n:"kozepes",ms:"https://musescore.com/user/36369207/scores/6624080",dr:"https://drive.google.com/file/d/1MbHZYNZtI2KVez6tmus3nwDB9bAd4aRD/view"},
+{c:"Filmzene",t:"Jégkorszak 3 – Buck's Theme [EPIC]",s:"John Powell",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/23390236",dr:"https://drive.google.com/file/d/1DtF5oZSUGTJeOOfJPxd6YQP9eFB2Vo-9/view"},
+{c:"Filmzene",t:"Jégkorszak 3 – Campfire Stories",s:"John Powell",h:"szim",n:"nehez",ms:"https://musescore.com/user/36369207/scores/23547526",dr:"https://drive.google.com/file/d/1njsu8yfkx6NdhR6tMS-tmYJbc9dcLH9j/view"},
+{c:"Filmzene",t:"The Christmas Spirit",s:"The Soundtrack Factory",h:"szim",n:"konnyu",note:"2020 MuseScore karácsonyi versenydarab",ms:"https://musescore.com/user/36369207/scores/6505059",dr:"https://drive.google.com/file/d/1NZvD8LBBXPGxp-t-A2bTpg6OV152mJat/view"},
+{c:"Filmzene",t:"Interstellar – szimfonikus",s:"Hans Zimmer",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/33793061/scores/6915496",dr:"https://drive.google.com/file/d/1xSYVbX_z8lYh_BUHPwd-HfEZi5EXffen/view"},
+{c:"Filmzene",t:"Interstellar – Marching Band",s:"Hans Zimmer",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/31208377/scores/6020251",dr:"https://drive.google.com/file/d/1HCNEdnFfNydBCrPMebzBYbw1g3A9vX5J/view"},
+{c:"Filmzene",t:"Interstellar – First Steps [CB]",s:"Hans Zimmer (arr. Anthony Tenorio)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/24385966/scores/4647766",dr:"https://drive.google.com/file/d/1Nk4kwuEzAvqxbeOovHM-BmOXD7Eme298/view"},
+{c:"Filmzene",t:"Jurassic Park – Suite CB [A – Kovich]",s:"John Williams (arr. Joshua Kovich)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/72052/scores/498331",dr:"https://drive.google.com/file/d/12By9bjFgU--XkR3VnHfFz5h7F6CdC8hs/view"},
+{c:"Filmzene",t:"Jurassic Park – Soundtrack Suite CB [B]",s:"John Williams (arr. Joshua Kovich)",h:"fuvos",n:"nehez",v:1,ms:"https://musescore.com/user/72052/scores/498331",dr:"https://drive.google.com/file/d/1-rS6Mqi6NF1HiJ7ARjDVAUyw_IONusFf/view"},
+{c:"Filmzene",t:"Jurassic Park – Journey to the Island",s:"John Williams",h:"szim",n:"kozepes",ms:"https://musescore.com/user/31899147/scores/6181618",dr:"https://drive.google.com/file/d/1NACx_d0GUDFIyHKCbu1pZDG3RL8r2Zoe/view"},
+{c:"Filmzene",t:"Jurassic Park – teljes zenekar (rövid)",s:"John Williams (arr. Elijah Gardner)",h:"szim",n:"konnyu",v:1,ms:"https://musescore.com/user/1809976/scores/1778386",dr:"https://drive.google.com/file/d/1sXlJ0GLeLKoAWh1A56v4Cal6wvDisVsr/view"},
+{c:"Filmzene",t:"Jurassic Park – főtéma (közepes verzió)",s:"John Williams",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/203946/scores/4841509",dr:"https://drive.google.com/file/d/1ta3FiktL28YDV_BS5zdgkpMzsEJguLNB/view"},
+{c:"Filmzene",t:"Jurassic Park – főtéma + Journey to the Island",s:"John Williams",h:"szim",n:"kozepes",o:1,v:1,ms:"https://musescore.com/user/2513116/scores/6110390",dr:"https://drive.google.com/file/d/1EW585CsJVWAKxgWiUwG6eQgTUXn20jy_/view"},
+{c:"Filmzene",t:"Jurassic Park – Zenekari suite [4 tétel]",s:"John Williams",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/6624501/scores/6253081",dr:"https://drive.google.com/file/d/14G5orCkIZg5ufjqEc1XJLmXC6xSD3jH6/view"},
+{c:"Filmzene",t:"Jurassic Park – főtéma [rövidített szimf.]",s:"John Williams",h:"szim",n:"konnyu",v:1,ms:"https://musescore.com/user/15454861/scores/6831701",dr:"https://drive.google.com/file/d/1CHO7dKfK0P5O0EDUwxijpjFCaI5I9UG1/view"},
+{c:"Filmzene",t:"Shrek – Highlights összeállítás",s:"Harry Gregson-Williams (arr. Bart Maas)",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/bmmusic/scores/2493131",dr:"https://drive.google.com/file/d/177MCsqqVgkU5ne3aOS4pky0eU-O1iyy5/view"},
+{c:"Filmzene",t:"Trónok harca – Opening Credits [CB]",s:"Ramin Djawadi",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/34214067/scores/7007183",dr:"https://drive.google.com/file/d/1XWOk7YEkrdvZkJEuV4LbaH2nWpNC1y0V/view"},
+{c:"Filmzene",t:"Trónok harca – főtéma [szimfonikus]",s:"Ramin Djawadi",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/6596146/scores/3205376",dr:"https://drive.google.com/file/d/1KgOP0MeJkXjVvNCnaBcy6VhAjmAFSkfV/view"},
+{c:"Filmzene",t:"Csillagok háborúja – Guardians of the Whills Suite",s:"Michael Giacchino",h:"szim",n:"nehez",ms:"https://musescore.com/user/15454861/scores/5236345",dr:"https://drive.google.com/file/d/1Y8hneII2gC_u_WKXDnYChLNMcijBzUOa/view"},
+{c:"Filmzene",t:"Csillagok háborúja – Your Father Would Be Proud",s:"Michael Giacchino",h:"fuvos",n:"kozepes",ms:"https://musescore.com/keegan_marching/scores/4251676",dr:"https://drive.google.com/file/d/1vHeiB4RAYr_TN9AUPVHHVb7HQGQcVQUZ/view"},
+{c:"Filmzene",t:"Csillagok háborúja – Rogue One CB [3.5]",s:"Michael Giacchino (arr. Jack Bertelli)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/user/6827241/scores/4428326",dr:"https://drive.google.com/file/d/16r-UurT470YTnF6QhYJz-m8zhgYXZJ1e/view"},
+{c:"Filmzene",t:"Star Trek (2009) – főtéma",s:"Michael Giacchino",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/15454861/scores/6692393",dr:"https://drive.google.com/file/d/1j9V6fcRhr67wxP0cmpBnArnD5BOZ1ah6/view"},
+{c:"Filmzene",t:"Star Trek: Into Darkness – Suite",s:"Michael Giacchino",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/15454861/scores/5562430",dr:"https://drive.google.com/file/d/13VKDIlCxqTr1-CTjhde_6teSuH9gaxdr/view"},
+{c:"Filmzene",t:"Star Trek: Into Darkness – zenekari átirat",s:"Michael Giacchino",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/thejoerosen1110/scores/2424851",dr:"https://drive.google.com/file/d/1D3kVIwRRZhMSD-ZhyIOGSCexGXnXdNSV/view"},
+{c:"Filmzene",t:"Star Trek (2009) – Enterprising Young Men",s:"Michael Giacchino (arr. Conor Doyle)",h:"szim",n:"kozepes",ms:"https://musescore.com/user/5194271/scores/2406671",dr:"https://drive.google.com/file/d/1e4NfI53US1HoW96ebllDE5DTK5GHFjb7/view"},
+{c:"Filmzene",t:"Lehetetlen küldetés főtéma [A]",s:"Lalo Schifrin",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/227681/scores/9378856",dr:"https://drive.google.com/file/d/12xyZxPAoZBj6CBnsm9tT-0JmtQTfhxlp/view"},
+{c:"Filmzene",t:"Lehetetlen küldetés főtéma [B]",s:"Lalo Schifrin",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/2435866/scores/6186429",dr:"https://drive.google.com/file/d/19aSyle4mXxK5ls-If8Jfz16rQjhWUMxU/view"},
+{c:"Filmzene",t:"Az Éhezők Viadala – Suite",s:"James Newton Howard",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/15454861/scores/10165600",dr:"https://drive.google.com/file/d/1nvf5zdSSB7ZlE0g3HUbT23wOnk19kjyi/view"},
+{c:"Filmzene",t:"Az Éhezők Viadala – Horn of Plenty",s:"James Newton Howard",h:"szim",n:"kozepes",ms:"https://musescore.com/user/29046924/scores/5243771",dr:"https://drive.google.com/file/d/1bAV2kYYb5tV4ptL67D4t7USV2MJQlw4G/view"},
+{c:"Filmzene",t:"Az Éhezők Viadala – There Are Worse Games & Hanging Tree",s:"James Newton Howard",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/12909521/scores/5484336",dr:"https://drive.google.com/file/d/1ApbxdoIZRdrsr18WpoQMJaJ84RG2c-sY/view"},
+{c:"Filmzene",t:"Az Éhezők Viadala – Deep Shadows & Horn of Plenty",s:"James Newton Howard",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/12909521/scores/5475078",dr:"https://drive.google.com/file/d/1-0pauYiBLnciPQvXlCaVK5ME2RxBzEVL/view"},
+{c:"Filmzene",t:"Transformers – Arrival to Earth [A – szimfonikus]",s:"Steve Jablonsky",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/39984571/scores/8809953",dr:"https://drive.google.com/file/d/122frutiDLVohSPK0uo5QdE2GQExZ3VwG/view"},
+{c:"Filmzene",t:"Transformers – Arrival to Earth [B – kisebb]",s:"Steve Jablonsky",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/4591226/scores/2213456",dr:"https://drive.google.com/file/d/1EEqmQ44NHBEygAIMkke2guo8sHzJvhfZ/view"},
+{c:"Filmzene",t:"Transformers – Arrival to Earth [C – eredeti]",s:"Steve Jablonsky",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/3481626/scores/5375156",dr:"https://drive.google.com/file/d/1zV2eHmJi_Ag60pVNs1GvxxjUyx_SdRUd/view"},
+{c:"Filmzene",t:"Transformers – Movie Medley",s:"Steve Jablonsky",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/7908001/scores/5207386",dr:"https://drive.google.com/file/d/1voXSXYUQX85Rezk7D1Qwcoc_aW_0hIZb/view"},
+{c:"Filmzene",t:"Transformers Prime főtéma [kórussal]",s:"Brian Tyler (arr. Derek Zhu)",h:"szim",n:"nehez",ms:"https://musescore.com/user/14433131/scores/6782835",dr:"https://drive.google.com/file/d/1h16cNv2MqMcWEOvePif9O-bVENemNuU_/view"},
+{c:"Filmzene",t:"A Mandalóri – főtéma [CB]",s:"Ludwig Göransson",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/32961268/scores/6997442",dr:"https://drive.google.com/file/d/1w5DnRTTgObTv0lVKjWacF6twpK01woax/view"},
+{c:"Filmzene",t:"A Varázsló – The Witcher főtéma [CB]",s:"Sonya Belousova / Percival",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/3318136/scores/1510341",dr:"https://drive.google.com/file/d/1N-ztVbHlZwXqPFJoyJ3i3QCSF8wOZ1Nf/view"},
+{c:"Filmzene",t:"Vissza a jövőbe – teljes szimfonikus",s:"Alan Silvestri",h:"szim",n:"nehez",v:1,ms:"https://musescore.com/user/27105927/scores/4839813",dr:"https://drive.google.com/file/d/1x7wyaEpXf4POp1IPjahILdMrhr5vGUqR/view"},
+{c:"Filmzene",t:"Vissza a jövőbe – Suite",s:"Alan Silvestri",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/7099791/scores/3511256",dr:"https://drive.google.com/file/d/1Lahy1jAGY8RQ2h1vvIYsqsMhAAfb7sXS/view"},
+{c:"Filmzene",t:"Vissza a jövőbe – kisebb hangszerelés",s:"Alan Silvestri (arr. MazeMusics)",h:"szim",n:"kozepes",v:1,ms:"https://musescore.com/user/6555676/scores/2508566",dr:"https://drive.google.com/file/d/1N1-ewptKoX68-MtRe_mNxNbXoNMLpKC2/view"},
+{c:"Filmzene",t:"Nausicaä – A szél völgyének harcosa (szimfonikus költemény)",s:"Joe Hisaishi (arr. Alexander Adriaensens)",h:"szim",n:"nehez",ms:"https://musescore.com/user/15685/scores/2196091",dr:"https://drive.google.com/file/d/1MaoFyd8rhtlJR1U2OkjWjibpZOvpjnnf/view"},
+{c:"Filmzene",t:"Kung Fu Panda – Panda Po",s:"Hans Zimmer / John Powell",h:"szim",n:"kozepes",ms:"https://musescore.com/user/36369207/scores/6480289",dr:"https://drive.google.com/file/d/162VDkaW0sl0oLqEL7nL31h93NqRInpzX/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – Once There Were Dragons",s:"John Powell (arr. thesoundtrackchannel)",h:"szim",n:"nehez",ms:"https://musescore.com/thesoundtrackchannel/scores/6683071",dr:"https://drive.google.com/file/d/18ME6_JatQxZvjut_PjNNqhiJSxIbZFuL/view"},
+{c:"Filmzene",t:"Így neveld a sárkányodat – See You Tomorrow",s:"John Powell",h:"szim",n:"kozepes",ms:"https://musescore.com/user/33844981/scores/25428649",dr:"https://drive.google.com/file/d/14Wvb5MrUP2PVMTijJ9oZNmWJ6wbtFso8/view"},
+{c:"Filmzene",t:"Interstellar – Mountains",s:"Hans Zimmer",h:"szim",n:"kozepes",v:1,note:"Új szimfonikus változat",ms:"https://musescore.com/user/35675360/scores/9706618",dr:"https://drive.google.com/file/d/1MKbuDvbwobEw_LgLcGkUh7duxMSyL2Oq/view"},
+{c:"Filmzene",t:"Vadon hívó szava – Buck Takes the Lead",s:"John Powell",h:"szim",n:"kozepes",note:"Különböző tétel a Call of the Wild Suite-tól",ms:"https://musescore.com/user/36369207/scores/6614879",dr:"https://drive.google.com/file/d/1NjlnOYh47UxDI4zTMDjhZRg6kPqVhuXi/view"},
+{c:"Filmzene",t:"Titanic – Medley [szimfonikus]",s:"James Horner (arr. Takashi Hoshide)",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/6348276/scores/5421969",dr:"https://drive.google.com/file/d/14qnrZv79j7wFbZTW8r2i55vKZmy12VyR/view"},
+{c:"Filmzene",t:"Rocky – Concert Medley",s:"Bill Conti (arr. CB)",h:"szim",n:"kozepes",o:1,note:"Introduction (Overture) + Going the Distance – a PDF-ben WIP jelölés!",ms:"https://musescore.com/user/29195528/scores/5265840",dr:"https://drive.google.com/file/d/1i4aQ4ClJvOjmXNaAsrLHRacSQgVKKd8j/view"},
+{c:"Filmzene",t:"Giacchino the Great – A Michael Giacchino medley [CB]",s:"Michael Giacchino (arr. Johnathan Rickard)",h:"fuvos",n:"nehez",o:1,note:"Jurassic World, Ratatouille, Star Trek, The Incredibles",ms:"https://musescore.com/user/1437251/scores/2509236",dr:"https://drive.google.com/file/d/1urZMh07BvufvGk_JVLJVjLmRWcoA8PY8/view"},
+{c:"Filmzene",t:"Movie Magic [szimfonikus]",s:"Thomas Doss (arr. CB)",note:"Filmzenei ihletésű fúvósbanda-mű; szerző-azonosítás ellenőrizendő",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/255116/scores/5045247",dr:"https://drive.google.com/file/d/1MuSq5-FOWpIHZaIUdneNriJmFiLOdLW5/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – Medley [új arr.]",s:"Klaus Badelt / Hans Zimmer (arr. különböző)",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/55443802/scores/8968229",dr:"https://drive.google.com/file/d/1p-daI57VA36LHUeWMzmKYPEqVIE3iBS2/view"},
+{c:"Filmzene",t:"A Karib-tenger kalózai – Medley [Ted Ricketts arr.]",s:"Klaus Badelt / Hans Zimmer (arr. Ted Ricketts)",h:"szim",n:"nehez",o:1,v:1,ms:"https://musescore.com/user/4841481/scores/9380350",dr:"https://drive.google.com/file/d/1EEfFvUbV9dLuEnYA5sEsT7CpX8r_y58C/view"},
+{c:"Filmzene",t:"Victory – Battlecry [CB]",s:"Thomas J. Bergersen / Nick Phoenix (Two Steps From Hell)",h:"fuvos",n:"nehez",note:"ArrangeMe licenszelt kotta – Two Steps From Hell (arr. Nikita Khryapin)",dr:"https://drive.google.com/file/d/1ncgEHuU-Rk0p2EXtcFiqVkMyqTwxOZzC/view"},
+{c:"Filmzene",t:"Nearer, My God, to Thee – Titanic [CB, ifjúsági]",s:"Traditional (arr. Keith Terrett)",h:"fuvos",n:"konnyu",note:"ArrangeMe licenszelt kotta – a Titanic-himnusz fiatalabb CB-ra; különbözik a Titanic Medley-től",dr:"https://drive.google.com/file/d/1PJrh3qvia0QSA0OBXC1f17Cm_8OM4hmE/view"},
+{c:"Filmzene",t:"Night at the Museum – Score [CB]",s:"Alan Silvestri (arr. Angus Winton)",h:"fuvos",n:"kozepes",note:"ArrangeMe licenszelt kotta – 2006-os Ben Stiller film zenéje",dr:"https://drive.google.com/file/d/1x0uLeXBqjspR9ST2zGJ5NygAk_ITQM2I/view"},
+{c:"Filmzene",t:"Kung Fu Panda – CB [Marco Frizzarin arr.]",s:"Hans Zimmer / John Powell / Henry Jackman (arr. Marco Frizzarin)",h:"fuvos",n:"nehez",note:"ArrangeMe licenszelt kotta – különbözik a meglévő 'Panda Po' változattól",dr:"https://drive.google.com/file/d/1z5vXsFt4Nsn-5LHrlxkFAOArFIluD0YR/view"},
+{c:"Jatek",t:"Csillagok háborúja – Darth Revan birodalma [CB]",s:"Mark Griskey",h:"fuvos",n:"nehez",note:"Star Wars: Knights of the Old Republic II – videójáték",ms:"https://musescore.com/user/46388504/scores/7897094",dr:"https://drive.google.com/file/d/1Hy9JO2JsDHq5sPI8glVO1_0rEjd48rXx/view"},
+{c:"Jatek",t:"Halo Reach – Overture [CB]",s:"Martin O'Donnell / Michael Salvatori",h:"fuvos",n:"nehez",ms:"https://musescore.com/user/27457982/scores/7143282",dr:"https://drive.google.com/file/d/1bF-PcSj-dxVz8l-6tkOOL4upeg3UucZb/view"},
+{c:"Jatek",t:"Halo – főtéma & One Final Effort",s:"Martin O'Donnell / Michael Salvatori",h:"szim",n:"nehez",o:1,ms:"https://musescore.com/user/23888861/scores/6198467",dr:"https://drive.google.com/file/d/1R0psWJy4aneRh63RgSkHY74dpy2LeJaW/view"},
+{c:"Jatek",t:"Zelda – Majora maszkja Suite [CB]",s:"Koji Kondo",h:"fuvos",n:"nehez",o:1,ms:"https://musescore.com/semisocial/scores/5263311",dr:"https://drive.google.com/file/d/1ZG0zu8ZSWwjbhA3zIMRLvEsLKjTxCIAf/view"},
+{c:"Jatek",t:"Zelda – 30. évfordulós összeállítás [CB]",s:"Koji Kondo",h:"fuvos",n:"nehez",o:1,ms:"https://musescore.com/user/3674151/scores/6439769",dr:"https://drive.google.com/file/d/1sFk-PDZkL6tK55YY9iiJiRZd8ne_13iA/view"},
+{c:"Jatek",t:"Zelda – Highlights Suite [CB]",s:"Koji Kondo",h:"fuvos",n:"nehez",o:1,ms:"https://musescore.com/user/9595811/scores/5556201",dr:"https://drive.google.com/file/d/1MZ4aoTZ26J754K4m8hB9ocYhgTRfqSeB/view"},
+{c:"Jatek",t:"Zelda – Ocarina of Time Medley [szimfonikus]",s:"Koji Kondo (arr. Navi Nova)",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/201240/scores/1927116",dr:"https://drive.google.com/file/d/14plL0RLvKOTyZFgPROJi1sBzJaANs-PR/view"},
+{c:"Jatek",t:"Zelda – A Link to the Past medley [CB]",s:"Koji Kondo (arr. Gauthier Dupertuis)",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/75638/scores/1921961",dr:"https://drive.google.com/file/d/1APWxvk8RFZWoDut_C3IPjldbUH0Hutcn/view"},
+{c:"Jatek",t:"Zelda – 25. évfordulós főtéma medley",s:"Koji Kondo",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/7428766/scores/4933384",dr:"https://drive.google.com/file/d/1rrZ_Dh5sn-Z9hLLklPssz7h8WDjvHNXL/view"},
+{c:"Jatek",t:"Super Mario Galaxy – Medley [CB]",s:"Mahito Yokota (arr. G. Dupertuis)",h:"fuvos",n:"nehez",o:1,dr:"https://drive.google.com/file/d/1IGiVHPwtgJBwCYo8TvGirItt31PcfzGa/view",flag:"Hiányzik MuseScore link"},
+{c:"Jatek",t:"Super Mario Galaxy – Staff Roll Theme [CB]",s:"Mahito Yokota (arr. G. Dupertuis)",h:"fuvos",n:"nehez",v:1,dr:"https://drive.google.com/file/d/18HDZi1TWbiq6GAprO_jBRxCAVxsvol0c/view",flag:"Hiányzik MuseScore link"},
+{c:"Jatek",t:"Super Smash Bros. – Medley [CB, frissített]",s:"Hideki Sakamoto (arr. nara567)",h:"fuvos",n:"nehez",o:1,v:1,ms:"https://musescore.com/nara567/scores/95061",dr:"https://drive.google.com/file/d/1cVON2CozKZMaBtJ1LbExpH-2vXy1C0W8/view"},
+{c:"Jatek",t:"Assassin's Creed – szimfonikus feldolgozás",s:"Jesper Kyd / Lorne Balfe / Brian Tyler (arr. Ethan Kiama)",h:"szim",n:"nehez",ms:"https://musescore.com/user/856936/scores/5681906",dr:"https://drive.google.com/file/d/1zMZOCgJ-vCJHvYfKOxxdEBFkQoicn_lg/view"},
+{c:"Bevezeto",t:"Universal téma",s:"",h:"szim",n:"konnyu",ms:"https://musescore.com/user/33757031/scores/6606353",dr:"https://drive.google.com/file/d/14zeeh3NtbUCz87703G07iX7xD1cbHyMs/view"},
+{c:"Bevezeto",t:"Universal Stúdiók főtéma (100. évforduló)",s:"",h:"szim",n:"konnyu",ms:"https://musescore.com/user/53771/scores/3876316",dr:"https://drive.google.com/file/d/1I78Cwdcec3hecWW1Y_KQkeEFUSpqH_Zf/view"},
+{c:"Bevezeto",t:"F1 főtéma",s:"Brian Tyler",h:"szim",n:"kozepes",ms:"https://musescore.com/user/27164878/scores/7265105",dr:"https://drive.google.com/file/d/1cUe2xXDyyPhg5w3JFvkBKoYvdnu7RBKT/view"},
+{c:"Musical",t:"Ifjúságira – Sweet Dreams [A változat]",s:"Annie Lennox / Dave Stewart (előadta: Eurythmics)",h:"egyeb",n:"konnyu",v:1,ms:"https://musescore.com/user/28810771/scores/6131737",dr:"https://docs.google.com/document/d/1BS9u2ZF8FEX4tsYEHR3yhMk4_Kt8V6ThaG8DPRNvRaQ/edit"},
+{c:"Musical",t:"Ifjúságira – Sweet Dreams [B változat]",s:"Annie Lennox / Dave Stewart (előadta: Eurythmics)",h:"egyeb",n:"konnyu",v:1,ms:"https://musescore.com/user/3214561/scores/3414056",dr:"https://docs.google.com/document/d/1BS9u2ZF8FEX4tsYEHR3yhMk4_Kt8V6ThaG8DPRNvRaQ/edit"},
+{c:"Musical",t:"Ifjúságira – Sweet Dreams [C változat]",s:"Annie Lennox / Dave Stewart (előadta: Eurythmics)",h:"egyeb",n:"konnyu",v:1,ms:"https://musescore.com/user/4626976/scores/6338750",dr:"https://docs.google.com/document/d/1BS9u2ZF8FEX4tsYEHR3yhMk4_Kt8V6ThaG8DPRNvRaQ/edit"},
+{c:"Musical",t:"Ifjúságira – Sweet Dreams [D változat]",s:"Annie Lennox / Dave Stewart (előadta: Eurythmics)",h:"egyeb",n:"konnyu",v:1,ms:"https://musescore.com/user/3068241/scores/6740572",dr:"https://docs.google.com/document/d/1BS9u2ZF8FEX4tsYEHR3yhMk4_Kt8V6ThaG8DPRNvRaQ/edit"},
+{c:"Musical",t:"Ifjúságira – Sweet Dreams [E változat]",s:"Annie Lennox / Dave Stewart (előadta: Eurythmics)",h:"egyeb",n:"konnyu",v:1,ms:"https://musescore.com/user/4605236/scores/2827226",dr:"https://docs.google.com/document/d/1BS9u2ZF8FEX4tsYEHR3yhMk4_Kt8V6ThaG8DPRNvRaQ/edit"},
+{c:"Musical",t:"HSM – High School Musical Medley 3",s:"Több szerző",h:"egyeb",n:"kozepes",o:1,ms:"https://musescore.com/user/28095304/scores/6502289",note:"PRO kotta"},
+{c:"Musical",t:"High School Musical: The Musical: The Series – Medley [CB]",s:"Több szerző (arr. J.O.R.J)",h:"fuvos",n:"kozepes",o:1,note:"Wondering, All I Want, Breaking Free, We're All In This Together – különbözik a Medley 3-tól",ms:"https://musescore.com/user/28095304/scores/6191203",dr:"https://drive.google.com/file/d/1C5mX3cyphfTLDxRNGJ5beC52B1SzGibb/view"},
+{c:"Musical",t:"Defying Gravity [CB]",s:"Stephen Schwartz (arr. Stephan Langenberg)",h:"fuvos",n:"kozepes",note:"ArrangeMe licenszelt kotta – Wicked musical főszáma",dr:"https://drive.google.com/file/d/18IK2m2WPWgfvW215pgzMoIOxTIYsmP7D/view"},
+{c:"MEME",t:"Never Gonna Give You Up [A – nagy hangszerelés]",s:"Mike Stock / Matt Aitken / Pete Waterman (előadó: Rick Astley)",h:"szim",n:"kozepes",v:1,note:"Rickroll",ms:"https://musescore.com/user/73520/scores/6874611",dr:"https://drive.google.com/file/d/1qnQlqMblmfLHzLFZqCD5GufKmEqdYaBN/view"},
+{c:"MEME",t:"Never Gonna Give You Up [B – kisebb hangszerelés]",s:"Mike Stock / Matt Aitken / Pete Waterman (előadó: Rick Astley)",h:"szim",n:"kozepes",v:1,note:"Rickroll",ms:"https://musescore.com/user/35402584/scores/6472167",dr:"https://drive.google.com/file/d/1MNrgCfNYVtDYqBgBzYqzFLDPeOvJgq1D/view"},
+{c:"MEME",t:"All Star – teljes zenekari feldolgozás",s:"Greg Camp / Smash Mouth",h:"szim",n:"kozepes",ms:"https://musescore.com/user/28946344/scores/5742456",dr:"https://drive.google.com/file/d/1MQrxlBTsAll7LCwCCIZz9ZUacr0asQcE/view"},
+{c:"MEME",t:"Spooky Scary Skeletons – fúvószenekar",s:"Andrew Gold (arr. McAsey)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/10913231/scores/2871886",dr:"https://drive.google.com/file/d/1ntDgFtzJU8x0BRZ8A1drCF2DvF-d6RhW/view"},
+{c:"MEME",t:"SpongeBob Squarepants – The Sponge Suite [CB]",s:"Több szerző (arr. SpongeBand)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/104687/scores/1955706",dr:"https://drive.google.com/file/d/1YOgehhzkWqs-meLqwluvnTiXbZK9aKo3/view"},
+{c:"Vegyes",t:"Thriller – szimfonikus feldolgozás",s:"Michael Jackson",h:"szim",n:"nehez",ms:"https://musescore.com/user/40427209/scores/8008034",dr:"https://drive.google.com/file/d/1STwmbkgFxJ0VvbSI_9bj-R1Vv4N7pwCr/view"},
+{c:"Vegyes",t:"A Journey to Mars",s:"Elliot Butler",h:"szim",n:"kozepes",note:"Díjnyertes koncertmű (2016 NYCC)",ms:"https://musescore.com/user/10711031/scores/2333891",dr:"https://drive.google.com/file/d/16uNsFsIxSBfFel-lbwByo-pJm-dKMNo4/view"},
+{c:"Vegyes",t:"Take Five [szimfonikus feldolgozás]",s:"Paul Desmond / Dave Brubeck (arr. CB)",h:"szim",n:"kozepes",ms:"https://musescore.com/moussical_presents/scores/5888171",dr:"https://drive.google.com/file/d/1jd5UV3WlpB4VtA7_BqTIq85QI6hzXFoP/view",note:"Van külön szóló verzió is ('más a szóló' mappa)"},
+{c:"Vegyes",t:"Hallelujah [szimfonikus feldolgozás]",s:"Leonard Cohen (arr. CB)",h:"szim",n:"kozepes",ms:"https://musescore.com/user/255116/scores/4650306",dr:"https://drive.google.com/file/d/1EcCLG2qOTMgqX9rONMNdRetGNrSDZh2A/view"},
+{c:"Vegyes",t:"Africa – Toto [CB, Choir, String Ensemble]",s:"Toto (arr. for Concert Band)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/4065966/scores/5543117",dr:"https://drive.google.com/file/d/1Hn4E755cafUCwlIvlIWP6hgeZv3_m_r4/view"},
+{c:"Vegyes",t:"Take Me Home Country Roads [fúvószenekar]",s:"Bill Danoff / Taffy Nivert / John Denver (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/32092717/scores/5591814",dr:"https://drive.google.com/file/d/1EC0QLyzsX7VOdVVqVNOYOkRu6wO7XVB9/view",note:"Teljes cím: Take Me Home Country Roads"},
+{c:"Vegyes",t:"It's Raining Men [fúvószenekar]",s:"Paul Jabara / Paul Shaffer (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/31456182/scores/6537556",dr:"https://drive.google.com/file/d/1XCgESii5ohGsOyGu6nSJ-SYXT_JeyhF5/view"},
+{c:"Vegyes",t:"Magyar tánc No. 5 fis-mollban – fúvószenekar",s:"Johannes Brahms (arr. John Lambert)",h:"fuvos",n:"kozepes",dr:"https://drive.google.com/file/d/1UkgpbOBVQPVOa9zj8jKA1J--2alvGki9/view",flag:"Hiányzik MuseScore link"},
+{c:"Vegyes",t:"River Flows in You [fúvószenekar]",s:"Yiruma (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/9057946/scores/5139558",dr:"https://drive.google.com/file/d/1cWvjo1ed5-Ea0_0IXxUOVLkqm2A3_0ef/view"},
+{c:"Vegyes",t:"Ed Sheeran – Perfect [fúvószenekar]",s:"Ed Sheeran (arr. Mattia de Monti)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/29591808/scores/5376723",dr:"https://drive.google.com/file/d/1ja2xfC-h-4NicdJ5jCfCjm5ALSxJVIom/view"},
+{c:"Vegyes",t:"Stand By Me [fúvószenekar]",s:"Ben E. King / Jerry Leiber / Mike Stoller",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/13770876/scores/5080743",dr:"https://drive.google.com/file/d/10rNi1ITzAuRFY0z2coSIW54VaVrB5E7S/view"},
+{c:"Vegyes",t:"Feeling Good – Michael Bublé [fúvószenekar]",s:"Anthony Newley / Leslie Bricusse",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/7245146/scores/5277942",dr:"https://drive.google.com/file/d/1Q9VxZJGoKOZIbn6s-dQ9Tp-iKJdNYFw9/view"},
+{c:"Vegyes",t:"Sway – Michael Bublé [fúvószenekar]",s:"Pablo Beltrán Ruiz",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/7245146/scores/6201433",dr:"https://drive.google.com/file/d/1Skh_lqfaPZTzPGLFftWrGgXWsmYa2o9m/view"},
+{c:"Vegyes",t:"Avicii Medley – Levels / Hey Brother / Wake Me Up",s:"Tim Bergling (Avicii) (arr. charanga/CB)",h:"fuvos",n:"kozepes",o:1,ms:"https://musescore.com/user/25968446/scores/6549923",dr:"https://drive.google.com/file/d/1lAVfZh3AkQGgTOaYIwcVqZZkwBWi4hMM/view"},
+{c:"Vegyes",t:"Moon River [CB feldolgozás]",s:"Henry Mancini (arr. Jacob Collier / CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/30371568/scores/6020890",dr:"https://drive.google.com/file/d/1BFrWO_GzAqzeykzbPIiEqJTFaUj_rcp5/view"},
+{c:"Vegyes",t:"Can-Can – Orpheusz az alvilágban [szimfonikus]",s:"Jacques Offenbach",h:"szim",n:"kozepes",ms:"https://musescore.com/user/28830745/scores/5647068",dr:"https://drive.google.com/file/d/196NKAfqAiRLH-WvroIOlbPUs9oUIc0KJ/view"},
+{c:"Vegyes",t:"Jupiter – A Bolygók szvitjéből [fúvószenekar]",s:"Gustav Holst (arr. CB)",h:"fuvos",n:"nehez",ms:"https://musescore.com/user/32698773/scores/6305864",dr:"https://drive.google.com/file/d/1SE1Rambzp9YD_-_SHnbOinJZE0YEDj3S/view"},
+{c:"Vegyes",t:"Pachelbel – Canon in D [fúvószenekar]",s:"Johann Pachelbel (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/27195176/scores/5607854",dr:"https://drive.google.com/file/d/1haABCxPtYSegtZzer2g8yGy5tjie3qUq/view"},
+{c:"Vegyes",t:"Liz és a kék madár – I–IV. tétel [CB]",s:"Kensuke Ushio / Akito Matsuda",h:"fuvos",n:"nehez",ms:"https://musescore.com/user/14226921/scores/5595193",dr:"https://drive.google.com/file/d/1Yxi26h86dWmlAGmns02tbga0giQusZCt/view"},
+{c:"Vegyes",t:"Hibike! Euphonium – Wind of Provence [CB]",s:"Yoshiaki Fujisawa (sorozat zeneszerzője)",h:"fuvos",n:"nehez",note:"A 'プロヴァンスの風' (March Wind of Provence) eredeti szerzője ellenőrizendő",ms:"https://musescore.com/user/17643186/scores/7758101",dr:"https://drive.google.com/file/d/1pD6-rfs8LBwv2vtSkc2JlTjuXZVUJz8c/view"},
+{c:"Vegyes",t:"Trigger [fúvószenekar]",s:"Ahisa",h:"fuvos",n:"nehez",ms:"https://musescore.com/user/25831161/scores/6534874",dr:"https://drive.google.com/file/d/1qo1Xuxr2HgtFtheuXq4GsTceNRBNAM10/view",note:"Japán fúvós mű – Ahisa szerző (animéhez kapcsolódó)"},
+{c:"Vegyes",t:"Arabian Dances [CB]",s:"Roland Barrett (arr. CB)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/32040762/scores/6770532",dr:"https://drive.google.com/file/d/1dDaqkeqZt2zAngh5r-2jjH1TvHpijo6D/view"},
+{c:"Vegyes",t:"Kindheitshelden – Childhood Heroes TV Medley",s:"Több szerző (arr. CB)",h:"szim",n:"kozepes",o:1,ms:"https://musescore.com/user/115137/scores/5685810",dr:"https://drive.google.com/file/d/1uyZk5Js86WqGYD56HDtAPSR_OT3jgAjY/view"},
+{c:"Vegyes",t:"Australian Folk Song Medley [CB]",s:"Több szerző (arr. CB)",h:"fuvos",n:"kozepes",o:1,note:"2022 MAGA National Youth Music Arranging Competition – 3. helyezett",ms:"https://musescore.com/user/3443166/scores/8556389",dr:"https://drive.google.com/file/d/1VEugg26a8dymsPVWKD8VtLlmom1CSAzD/view"},
+{c:"Vegyes",t:"Like Cinema – Mimis Plessas [CB]",s:"Mimis Plessas (arr. CB)",h:"fuvos",n:"kozepes",o:1,note:"Görög zenész és zenszerző; 1960-as évek görög filmjeinek dalai",ms:"https://musescore.com/user/34241768/scores/6501317",dr:"https://drive.google.com/file/d/12DevwRPpb1u1NE2UMmHp_2rWOYf5X5c7/view"},
+{c:"Vegyes",t:"Good Vibes Mix [Charanga, CB]",s:"Több szerző (arr. charanga stílusban)",h:"fuvos",n:"konnyu",o:1,note:"Todos los días sale el sol – MariCarmen – Gat Rumberu",ms:"https://musescore.com/user/25968446/scores/14552872",dr:"https://drive.google.com/file/d/11eOOxpNi0-tG0l4TAOlFmqedqgmcd4Ao/view"},
+{c:"Vegyes",t:"Pedro – Raffaella Carrà [CB]",s:"Rolf Caverdaghi / Raffaella Carrà (arr. Matteo Margolfo)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/38028/scores/8454398",dr:"https://drive.google.com/file/d/1DoGO41fN4f_ARv5NLii9FqtP_ZO4V4Uz/view"},
+{c:"Vegyes",t:"Ismeretlen mű [music.pdf]",s:"Ismeretlen",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/30002073/scores/5547979",dr:"https://drive.google.com/file/d/1-Or-tX5jyibFVe_JsIJU4JoqjV2DxWJO/view",flag:"Azonosítandó – a fájl neve 'music.pdf', MS link: scores/5547979"},
+{c:"Vegyes",t:"Die With a Smile [CB]",s:"Bruno Mars / Lady Gaga / Andrew Watt (arr. Issac Koh)",h:"fuvos",n:"kozepes",note:"ArrangeMe licenszelt kotta",dr:"https://drive.google.com/file/d/1fJXnG2nNz0mimYgb4CJO6K-YAIc4iM2T/view"},
+{c:"Vegyes",t:"Feels So Good [CB Flex-Band]",s:"Chuck Mangione (arr. Franklin Fajardo)",h:"fuvos",n:"kozepes",note:"ArrangeMe licenszelt kotta – Flex-Band formátum",dr:"https://drive.google.com/file/d/1B8doX8pA-9pXu5wKdP4x8ZpRHTgKxhUr/view"},
+{c:"Vegyes",t:"Careless Whisper [CB]",s:"George Michael / Andrew Ridgeley (arr. Diego Nogueira)",h:"fuvos",n:"kozepes",note:"ArrangeMe licenszelt kotta – Gabrielle Aplin covere alapján arr.; eredeti dal: George Michael / Wham!",dr:"https://drive.google.com/file/d/1OM-upGuiFn0ARjeW148HZt5uTOjFiG1F/view"},
+{c:"Vegyes",t:"Historia de un Amor [CB]",s:"Carlos Eleta Almarán (arr. Ajlan Akyuz)",h:"fuvos",n:"konnyu",note:"ArrangeMe licenszelt kotta – Julio Iglesias feldolgozása alapján; eredeti szerző: Carlos Eleta Almarán",dr:"https://drive.google.com/file/d/1HofcFdtO5M8NZQsN5PFCznmEDzXgTKJA/view"},
+{c:"Karacsony",t:"All I Want for Christmas Is You [CB]",s:"Mariah Carey / Walter Afanasieff (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/26341621/scores/4899042",dr:"https://drive.google.com/file/d/1VFhnhHZ6CodhWdvFA9GIUh4SV_lKQ0UN/view"},
+{c:"Karacsony",t:"Jingle Bell Rock [teljes zenekar]",s:"Joe Beal / Jim Boothe",h:"szim",n:"konnyu",ms:"https://musescore.com/user/16572446/scores/6498752",dr:"https://drive.google.com/file/d/1G1T6vfcOPcw09y1n2hf-TW2M-uWkolVV/view"},
+{c:"Karacsony",t:"Last Christmas [CB]",s:"George Michael / Wham! (arr. CB)",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/36279230/scores/6202968",dr:"https://drive.google.com/file/d/1C6Tw005CB5lnAJ79FEpLc8qIBaE4mfH9/view"},
+{c:"Karacsony",t:"Christmas Medley [CB]",s:"Több szerző (arr. CB)",h:"fuvos",n:"konnyu",o:1,ms:"https://musescore.com/user/23115056/scores/2613861",dr:"https://drive.google.com/file/d/1IHZ1VXo6YllUf_rnWQq5F2FvixZmx07E/view"},
+{c:"Karacsony",t:"All I Want for Christmas Is You [CB – Yap Sin Yee arr.]",s:"Mariah Carey / Walter Afanasieff (arr. Yap Sin Yee)",h:"fuvos",n:"kozepes",v:1,note:"ArrangeMe licenszelt kotta – különbözik a meglévő CB-verziótól (64 oldalas, haladó)",dr:"https://drive.google.com/file/d/1Jtl4BVSZz8ftF4ENiixxdhhY0HTJKo4M/view"},
+{c:"Indulo",t:"Orosz és szovjet indulók – Vol. 1 [CB]",s:"Több szerző (arr. Various)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/17884066/scores/6598776",dr:"https://drive.google.com/file/d/1TykjJFYceFnjNyzLWxL6BtECz-R3fRbG/view"},
+{c:"Indulo",t:"Orosz és szovjet indulók – Vol. 2 [CB]",s:"Több szerző (arr. Various)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/17884066/scores/7026033",dr:"https://drive.google.com/file/d/1qUSTOlR5ovPzQrrCm5cQbflhqf7EzUzA/view"},
+{c:"Indulo",t:"The Stars and Stripes Forever [A – P.R. Theodore arr., CB]",s:"John Philip Sousa (arr. P.R. Theodore)",h:"fuvos",n:"kozepes",v:1,ms:"",dr:"https://drive.google.com/file/d/1HQB_YKiu0HFj1eq6E3NVG9xM6nNqA6sU/view",flag:"Hiányzik MuseScore link"},
+{c:"Indulo",t:"The Stars and Stripes Forever [B – Pukalo arr.]",s:"John Philip Sousa (arr. Pukalo)",h:"fuvos",n:"kozepes",v:1,ms:"https://musescore.com/pukalo/scores/1506861",dr:"https://drive.google.com/file/d/1_E_W-0AlGO4W1Gv9L90_ZYTr3BnrSRvS/view"},
+{c:"Indulo",t:"A Szovjetunió himnusza [fúvószenekar]",s:"Alexander Alexandrov (himnusz; arr. CB)",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/21074081/scores/5211702",dr:"https://drive.google.com/file/d/1_l2gZh2IvMW4PUPkLeu7o1ROElxPXbql/view"},
+{c:"Indulo",t:"The Star-Spangled Banner – USA himnusza",s:"Francis Scott Key / John Stafford Smith",h:"fuvos",n:"konnyu",ms:"https://musescore.com/user/97654/scores/120051",dr:"https://drive.google.com/file/d/1KOdG4E-za5WhIGLYay3hlpCrWL6byBTn/view"},
+{c:"Indulo",t:"Imperial Perch March [fúvószenekar]",s:"arr. CB",h:"fuvos",n:"kozepes",ms:"https://musescore.com/user/12505886/scores/4156951",dr:"https://drive.google.com/file/d/1t_QWk38a6XjzgxKchadDBY_uKUGCSybs/view"},
+];
+
+const MF=[
+  {k:"mind",l:"Összes"},
+  {k:"Filmzene",l:"Filmzene"},
+  {k:"Marvel",l:"Marvel / DC"},
+  {k:"Disney",l:"Disney"},
+  {k:"Jatek",l:"Videójáték"},
+  {k:"Musical",l:"Musical"},
+  {k:"Bevezeto",l:"Bevezetők"},
+  {k:"MEME",l:"Meme"},
+  {k:"Vegyes",l:"Vegyes"},
+  {k:"Karacsony",l:"Karácsonyi"},
+  {k:"Indulo",l:"Induló"},
+];
+const MN={Filmzene:"Filmzene",Marvel:"Marvel / DC",Disney:"Disney",Jatek:"Videójáték",Musical:"Musical",Bevezeto:"Bevezető",MEME:"Meme",Vegyes:"Vegyes",Karacsony:"Karácsonyi",Indulo:"Induló"};
+const NN={konnyu:"Könnyű",kozepes:"Közepes",nehez:"Nehéz"};
+const NC={konnyu:"t-k",kozepes:"t-m",nehez:"t-n"};
+let ak="mind",st=false;
+
+function tV(){
+  st=!st;
+  document.body.classList.toggle("dark",st);
+  document.getElementById("tS").textContent=st?"Világos mód":"Sötét mód";
+  const ik=document.getElementById("tI");
+  ik.innerHTML=st
+    ?'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+    :'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+}
+
+function cEpit(){
+  const w=document.getElementById("chips");
+  MF.forEach(m=>{
+    const n=m.k==="mind"?K.length:K.filter(k=>k.c===m.k).length;
+    const b=document.createElement("button");
+    b.className="chip c"+m.k+(m.k==="mind"?" on":"");
+    b.innerHTML='<span>'+m.l+'</span><span class="cn2">'+n+'</span>';
+    b.onclick=()=>{
+      document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+      ak=m.k;
+      render();
+    };
+    w.appendChild(b);
+  });
+}
+
+function szurt(){
+  const q=document.getElementById("q").value.toLowerCase().trim();
+  const h=document.getElementById("hS").value;
+  const a=document.getElementById("aS").value;
+  const r=document.getElementById("rS").value;
+  let res=K.filter(k=>{
+    const mOk=q?true:(ak==="mind"||k.c===ak);
+    const qOk=!q||(
+      k.t.toLowerCase().includes(q)||
+      (k.s&&k.s.toLowerCase().includes(q))||
+      (k.note&&k.note.toLowerCase().includes(q))||
+      (MN[k.c]&&MN[k.c].toLowerCase().includes(q))
+    );
+    const hOk=!h||k.h===h;
+    const aOk=!a||(a==="ossze"&&k.o)||(a==="valtozat"&&k.v)||(a==="hianyzik"&&k.flag);
+    return mOk&&qOk&&hOk&&aOk;
+  });
+  if(r==="abc") res=[...res].sort((a,b)=>a.t.localeCompare(b.t,"hu"));
+  else if(r==="szerzo") res=[...res].sort((a,b)=>(a.s||"zzz").localeCompare(b.s||"zzz","hu"));
+  else if(r==="hianyzik") res=[...res].sort((a,b)=>(b.flag?1:0)-(a.flag?1:0));
+  return res;
+}
+
+function render(){
+  const d=szurt();
+  const lista=document.getElementById("lista");
+  const ures=document.getElementById("ures");
+  const ss=document.getElementById("ss");
+  lista.innerHTML="";
+  const v=d.filter(k=>k.v).length;
+  const o=d.filter(k=>k.o).length;
+  const f=d.filter(k=>k.flag).length;
+  ss.innerHTML='<div class="sp"><strong>'+d.length+'</strong>tétel</div>'
+    +(v?'<div class="sp"><strong>'+v+'</strong>hangszerelési verzió</div>':''  )
+    +(o?'<div class="sp"><strong>'+o+'</strong>medley / összeállítás</div>':''  )
+    +(f?'<div class="sp sp-flag"><strong>'+f+'</strong>⚠ hiányos link</div>':''  );
+  if(!d.length){ures.style.display="block";lista.style.display="none";return;}
+  ures.style.display="none";lista.style.display="flex";
+  d.forEach(k=>{
+    const el=document.createElement("div");
+    let sc="sor";
+    if(k.flag) sc+=" h-sor";
+    else if(k.v) sc+=" v-sor";
+    else if(k.o) sc+=" o-sor";
+    el.className=sc;
+    const tg=[];
+    if(k.h==="fuvos") tg.push('<span class="tag t-f">🎺 Concert Band / Fúvószenekar</span>');
+    else if(k.h==="szim") tg.push('<span class="tag t-s">🎻 Symphonic / Szimfonikus</span>');
+    if(k.o) tg.push('<span class="tag t-o">Medley</span>');
+    if(k.v) tg.push('<span class="tag t-v">Hangszerelési verzió</span>');
+    if(k.n) tg.push('<span class="tag '+NC[k.n]+'">'+NN[k.n]+'</span>');
+    if(k.flag) tg.push('<span class="tag t-flag">⚠ '+k.flag+'</span>');
+    const mt=[];
+    if(k.s) mt.push('<span class="mt">'+k.s+'</span>');
+    if(k.note) mt.push('<span class="mn">· '+k.note+'</span>');
+    let g="";
+    if(k.dr) g+='<a class="gp" href="'+k.dr+'" target="_blank">Partitúra '+EI+'</a>';
+    const hl=k.yt||k.ms;
+    if(hl) g+='<a class="gh" href="'+hl+'" target="_blank">Hallgass bele! '+EH+'</a>';
+    const hUrl=gmailLink(k.t,MN[k.c]||k.c,k.flag||''  );
+    const hibaBt='<div class="hiba-wrap"><a class="hiba-btn" href="'+hUrl+'" target="_blank">'+EM+' Hiba bejelentése</a></div>';
+    el.innerHTML=
+      '<div><div class="sc">'+k.t+'</div><div class="sm"><span class="mc m'+k.c+'">'+MN[k.c]+'</span>'+tg.join("")+mt.join(" ")+'</div></div>'+
+      '<div class="gombok">'+(g||"–")+'</div>'+
+      hibaBt;
+    lista.appendChild(el);
+  });
+}
+cEpit();
+render();
+
+</script>
+</body>
+</html>
